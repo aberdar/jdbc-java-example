@@ -19,7 +19,7 @@ public class TableMethods {
                     "answer VARCHAR(100)," +
                     "score DOUBLE(2,1)," +
                     "review VARCHAR(30)," +
-                    "has_pass VARCHAR(1)" +
+                    "has_pass BOOLEAN" +
                 ")";
         statement.executeQuery(query);
         System.out.println("Table has been created.");
@@ -32,7 +32,7 @@ public class TableMethods {
     }
 
     public static void insert(Student student, Connection connection) throws SQLException {
-        String query = "INSERT INTO " + nameDB +
+        String query = "INSERT INTO Students " +
                 "(name, surname, card, answer, score, review, has_pass)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement insertStudent = connection.prepareStatement(query);
@@ -42,7 +42,7 @@ public class TableMethods {
         insertStudent.setString(4, student.getAnswer());
         insertStudent.setDouble(5, student.getScore());
         insertStudent.setString(6, student.getReview());
-        insertStudent.setString(7, student.getHas_pass());
+        insertStudent.setBoolean(7, student.getHas_pass());
         insertStudent.execute();
     }
 }

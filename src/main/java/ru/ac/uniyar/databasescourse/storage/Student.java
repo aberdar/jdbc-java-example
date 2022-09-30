@@ -7,7 +7,7 @@ public class Student {
     String answer;
     Double score;
     String review;
-    String has_pass;
+    Boolean has_pass;
 
     public Student(
             String name,
@@ -16,7 +16,7 @@ public class Student {
             String answer,
             Double score,
             String review,
-            String has_pass
+            Boolean has_pass
     ) {
         this.name = name;
         this.surname = surname;
@@ -51,7 +51,7 @@ public class Student {
         return review;
     }
 
-    public String getHas_pass() {
+    public Boolean getHas_pass()     {
         return has_pass;
     }
 }

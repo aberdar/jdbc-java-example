@@ -22,7 +22,7 @@ public class SomeCsvDataLoader {
                         read[3],
                         Double.parseDouble(read[4]),
                         read[5],
-                        read[6]
+                        Boolean.parseBoolean(read[6])
                 )));
             } catch (CsvException e) {
                 throw new RuntimeException(e);
