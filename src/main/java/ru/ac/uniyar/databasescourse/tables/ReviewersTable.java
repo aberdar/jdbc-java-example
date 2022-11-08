@@ -17,8 +17,7 @@ public class ReviewersTable {
                 "CREATE TABLE IF NOT EXISTS "+ tableName +
                         "(" +
                         "reviewerID INT PRIMARY KEY," +
-                        "reviewerSurname VARCHAR(30) NOT NULL," +
-                        "reviewerDepartmentID INT AUTO_INCREMENT" +
+                        "reviewerSurname VARCHAR(30) NOT NULL" +
                         ");"
         );
         statement.close();
