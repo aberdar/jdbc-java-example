@@ -1,4 +1,4 @@
-package ru.ac.uniyar.databasescourse.query;
+package ru.ac.uniyar.databasescourse.tables;
 
 import ru.ac.uniyar.databasescourse.storage.Reviewer;
 
@@ -9,15 +9,16 @@ import java.sql.Statement;
 import java.util.HashSet;
 
 public class ReviewersTable {
+    private static final String tableName = "reviewers";
 
     public static void createTable(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(
-                "CREATE TABLE IF NOT EXISTS reviewers" +
+                "CREATE TABLE IF NOT EXISTS "+ tableName +
                         "(" +
                         "reviewerID INT PRIMARY KEY," +
                         "reviewerSurname VARCHAR(30) NOT NULL," +
-                        "reviewerDepartmentID INT AUTO INCREMENT" +
+                        "reviewerDepartmentID INT AUTO_INCREMENT" +
                         ");"
         );
         statement.close();
@@ -25,7 +26,7 @@ public class ReviewersTable {
 
     public static void insertData(Connection connection, HashSet<Reviewer> reviewers) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO reviewers (reviewerID, reviewerSurname) values (?, ?)"
+                "INSERT INTO " + tableName +" (reviewerID, reviewerSurname) values (?, ?)"
         );
 
         for (Reviewer reviewer: reviewers) {
