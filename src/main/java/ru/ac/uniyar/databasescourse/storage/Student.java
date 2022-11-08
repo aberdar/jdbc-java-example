@@ -1,30 +1,22 @@
 package ru.ac.uniyar.databasescourse.storage;
 
 public class Student {
-    String name;
-    String surname;
-    Integer card;
-    String answer;
-    Double score;
-    String review;
-    Boolean has_pass;
+    private final Integer id;
+    private final String name;
+    private final String surname;
 
     public Student(
+            Integer id,
             String name,
-            String surname,
-            Integer card,
-            String answer,
-            Double score,
-            String review,
-            Boolean has_pass
+            String surname
     ) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
-        this.card = card;
-        this.answer = answer;
-        this.score = score;
-        this.review = review;
-        this.has_pass = has_pass;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -33,25 +25,5 @@ public class Student {
 
     public String getSurname() {
         return surname;
-    }
-
-    public Integer getCard() {
-        return card;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public Double getScore() {
-        return score;
-    }
-
-    public String getReview() {
-        return review;
-    }
-
-    public Boolean getHas_pass()     {
-        return has_pass;
     }
 }
