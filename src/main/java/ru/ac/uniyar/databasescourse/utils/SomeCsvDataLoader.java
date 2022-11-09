@@ -15,15 +15,15 @@ public class SomeCsvDataLoader {
             List<Student> studentsList = new ArrayList<>();
             try (CSVReader reader = new CSVReaderBuilder(new FileReader(fileName)).withSkipLines(1).build()) {
                 List<String[]> readerList = reader.readAll();
-                readerList.forEach(read -> studentsList.add(new Student(
-                        read[0],
-                        read[1],
-                        Integer.parseInt(read[2]),
-                        read[3],
-                        Double.parseDouble(read[4]),
-                        read[5],
-                        Boolean.parseBoolean(read[6])
-                )));
+//                readerList.forEach(read -> studentsList.add(new Student(
+//                        read[0],
+//                        read[1],
+//                        Integer.parseInt(read[2]),
+//                        read[3],
+//                        Double.parseDouble(read[4]),
+//                        read[5],
+//                        Boolean.parseBoolean(read[6])
+//                )));
             } catch (CsvException e) {
                 throw new RuntimeException(e);
             }

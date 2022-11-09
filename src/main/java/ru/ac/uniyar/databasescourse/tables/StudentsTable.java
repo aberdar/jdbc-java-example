@@ -9,12 +9,12 @@ import java.sql.Statement;
 import java.util.HashSet;
 
 public class StudentsTable {
-    private static final String tableName = "students";
+    private static final String studentsTableName = "students";
 
     public static void createTable(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(
-                "CREATE TABLE IF NOT EXISTS "+ tableName +
+                "CREATE TABLE IF NOT EXISTS "+ studentsTableName +
                         "(" +
                         "studentID INT PRIMARY KEY," +
                         "studentName VARCHAR(30) NOT NULL," +
@@ -27,7 +27,7 @@ public class StudentsTable {
 
     public static void insertData(Connection connection, HashSet<Student> students) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO " + tableName + "(studentID, studentName, studentSurname) values (?, ?, ?);"
+                "INSERT INTO " + studentsTableName + "(studentID, studentName, studentSurname) values (?, ?, ?);"
         );
 
         for (Student student: students) {

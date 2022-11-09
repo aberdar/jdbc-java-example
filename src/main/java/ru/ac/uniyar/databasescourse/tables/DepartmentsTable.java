@@ -9,13 +9,13 @@ import java.sql.Statement;
 import java.util.HashSet;
 
 public class DepartmentsTable {
-    private static final String tableName = "departments";
+    private static final String departmentsTableName = "departments";
     private static final String referencesTableName = "reviewers";
 
     public static void createTable(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(
-                "CREATE TABLE IF NOT EXISTS " + tableName +
+                "CREATE TABLE IF NOT EXISTS " + departmentsTableName +
                         "(" +
                         "reviewerID INT NOT NULL," +
                         "departmentName VARCHAR(50) NOT NULL," +
@@ -27,7 +27,7 @@ public class DepartmentsTable {
 
     public static void insertData(Connection connection, HashSet<Department> departments) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO " + tableName +" (reviewerID, departmentName) values (?, ?)"
+                "INSERT INTO " + departmentsTableName +" (reviewerID, departmentName) values (?, ?)"
         );
 
         for (Department department: departments) {
