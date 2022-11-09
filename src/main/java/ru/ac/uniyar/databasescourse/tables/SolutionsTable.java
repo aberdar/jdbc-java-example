@@ -1,19 +1,19 @@
 package ru.ac.uniyar.databasescourse.tables;
 
 import ru.ac.uniyar.databasescourse.storage.Solution;
+import ru.ac.uniyar.databasescourse.utils.DatabaseConnection;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 
-public class SolutionsTable {
+public class SolutionsTable extends DatabaseConnection {
     private static final String solutionsTableName = "solutions",
                                 studentsTableName = "students",
                                 reviewersTableName = "reviewers";
 
-    public static void createTable(Connection connection) throws SQLException {
+    public static void createTable() throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(
                 "CREATE TABLE IF NOT EXISTS "+ solutionsTableName +
@@ -27,11 +27,10 @@ public class SolutionsTable {
                         "FOREIGN KEY (reviewerID) REFERENCES " + reviewersTableName + "(reviewerID)" +
                         ");"
         );
-
         statement.close();
     }
 
-    public static void insertTable(Connection connection, HashSet<Solution> solutions) throws SQLException {
+    public static void insertTable(HashSet<Solution> solutions) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO " + solutionsTableName +
                         "(solutionID, studentID, reviewerID, score, hasPass) values (?, ?, ?, ?, ?);"

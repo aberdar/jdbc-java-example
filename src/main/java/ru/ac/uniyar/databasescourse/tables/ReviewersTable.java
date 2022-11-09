@@ -1,17 +1,17 @@
 package ru.ac.uniyar.databasescourse.tables;
 
 import ru.ac.uniyar.databasescourse.storage.Reviewer;
+import ru.ac.uniyar.databasescourse.utils.DatabaseConnection;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 
-public class ReviewersTable {
+public class ReviewersTable extends DatabaseConnection {
     private static final String reviewersTableName = "reviewers";
 
-    public static void createTable(Connection connection) throws SQLException {
+    public static void createTable() throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(
                 "CREATE TABLE IF NOT EXISTS "+ reviewersTableName +
@@ -23,7 +23,7 @@ public class ReviewersTable {
         statement.close();
     }
 
-    public static void insertData(Connection connection, HashSet<Reviewer> reviewers) throws SQLException {
+    public static void insertData(HashSet<Reviewer> reviewers) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO " + reviewersTableName +" (reviewerID, reviewerSurname) values (?, ?)"
         );
@@ -32,5 +32,7 @@ public class ReviewersTable {
             preparedStatement.setInt(1, reviewer.getReviewerID());
             preparedStatement.setString(2, reviewer.getReviewerSurname());
         }
+
+        preparedStatement.close();
     }
 }
