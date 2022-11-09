@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 
-public class SomeCsvDataLoader {
+public class CsvDataLoader {
 
         public static void insertDatabase(String fileName) throws IOException {
             try (CSVReader reader = new CSVReaderBuilder(new FileReader(fileName)).withSkipLines(1).build()) {
