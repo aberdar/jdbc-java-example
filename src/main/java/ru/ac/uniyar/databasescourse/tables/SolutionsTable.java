@@ -1,8 +1,12 @@
 package ru.ac.uniyar.databasescourse.tables;
 
+import ru.ac.uniyar.databasescourse.storage.Solution;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
 
 public class SolutionsTable {
     private static final String solutionsTableName = "solutions",
@@ -27,5 +31,20 @@ public class SolutionsTable {
         statement.close();
     }
 
-    public static void insertTable() {}
+    public static void insertTable(Connection connection, HashSet<Solution> solutions) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO " + solutionsTableName +
+                        "(solutionID, studentID, reviewerID, score, hasPass) values (?, ?, ?, ?, ?);"
+        );
+
+        for (Solution solution: solutions) {
+            preparedStatement.setInt(1, solution.getSolutionID());
+            preparedStatement.setInt(2, solution.getStudentID());
+            preparedStatement.setInt(3, solution.getReviewerID());
+            preparedStatement.setDouble(4, solution.getScore());
+            preparedStatement.setString(5, solution.getHasPass());
+        }
+
+        preparedStatement.close();
+    }
 }
