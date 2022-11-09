@@ -1,6 +1,6 @@
 package ru.ac.uniyar.databasescourse;
 
-public class DatabaseExample {
+public class DatabaseApplication {
 
     public static void main(String[] args) {
         System.out.println("The work has started");
