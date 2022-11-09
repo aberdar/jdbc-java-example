@@ -15,7 +15,7 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-	mainClass = 'ru.ac.uniyar.databasescourse.DatabaseExample'
+	mainClass = 'ru.ac.uniyar.databasescourse.DatabaseApplication'
 }
 
 repositories {
